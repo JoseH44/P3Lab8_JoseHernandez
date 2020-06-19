@@ -26,3 +26,11 @@ vector<Usuario*> Usuario::getUsuariosSeguidos(){
 void Usuario::agregarUsuario_Seguido(Usuario* pUsuario){
 	usuarios_seguidos.push_back(pUsuario);
 }
+
+vector<Post*> Usuario::getPosts(){
+	return lista_posts;
+}
+
+void Usuario::agregarPost(Post* pPost){
+	lista_posts.push_back(pPost);
+}

@@ -1,6 +1,8 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+#include "Post.h"
+
 #include <iostream>
 using namespace std;
 
@@ -10,6 +12,8 @@ using std::string;
 #include <vector>
 using std::vector;
 
+class Archivo;
+
 class Usuario
 {
 	protected:
@@ -17,6 +21,7 @@ class Usuario
 		string nombre_usuario;
 		string contrasena;
 		vector<Usuario*> usuarios_seguidos;
+		vector<Post*> lista_posts;
 	public:
 		Usuario(string,string,string);
 		string getNombre();
@@ -24,6 +29,13 @@ class Usuario
 		string getContrasena();
 		vector<Usuario*> getUsuariosSeguidos();
 		void agregarUsuario_Seguido(Usuario*);
+		
+		vector<Post*> getPosts();
+		void agregarPost(Post*);
+		
+		
+	
+	friend class Archivo;
 	
 };
 
