@@ -29,6 +29,7 @@ class Usuario
 		string getContrasena();
 		vector<Usuario*> getUsuariosSeguidos();
 		void agregarUsuario_Seguido(Usuario*);
+		void eliminarUsuario(int);
 		
 		vector<Post*> getPosts();
 		void agregarPost(Post*);

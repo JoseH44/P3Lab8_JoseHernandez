@@ -31,6 +31,10 @@ vector<Post*> Usuario::getPosts(){
 	return lista_posts;
 }
 
+void Usuario::eliminarUsuario(int posicionSeguidor){
+	usuarios_seguidos.erase(usuarios_seguidos.begin()+posicionSeguidor);
+}
+
 void Usuario::agregarPost(Post* pPost){
 	lista_posts.push_back(pPost);
 }

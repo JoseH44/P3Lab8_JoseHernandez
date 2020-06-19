@@ -22,7 +22,7 @@ bool Archivo::guardarUsuario(Usuario* pUsuario){
 
 bool Archivo::abrirEscritura(int pModo){
 	modoEscritura = pModo;
-	modoEscritura = pModo;
+	
 	if(modoEscritura == 1)
 		outputFile.open(fileName.c_str(), std::ios::app);
 	else
@@ -61,6 +61,9 @@ void Archivo::leerUsuarios(){
 		
 		stringstream myStream;
 		myStream << buffer;
+		
+		if(buffer.size() == 0)
+			break;
 		
 		
 		//substring desde la primera coma hasta el final
