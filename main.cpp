@@ -227,17 +227,31 @@ int main(int argc, char** argv) {
 			cin >> user;
 			cout<<endl<<"Ingrese su Contrasena: ";
 			cin >> pass;
-			cout<<endl<<"LOGIN EXITOSAMENTE";
-			
-			
-			
 			for(int i = 0;i < usuarios.size();i++){
-				if(name == usuarios[i]->getNombre() && pass == usuarios[i]->getContrasena()){
+				if(user == usuarios[i]->getNombre() && pass == usuarios[i]->getContrasena()){
 					posicionUsuario = i;
 					break;
 				}
 				
 			}
+			cout<<endl<<"LOGIN EXITOSAMENTE";
+			
+			
+			
+			for(int i = 0;i < usuarios[posicionUsuario]->getUsuariosSeguidos().size();i++){
+				cout<<i<<"- Posts de: "<< usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getNombre()<<endl<<endl;//nombre de la persona del comentario
+				for(int j = 0;j < usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts().size();i++){
+					cout<<"#"<<j<<":"<<endl<<"["<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getTitulo()<<"]"<<endl
+						<<"/"<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getContenido()<<"/"<<endl
+						<<"(Likes:"<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getNumeroLikes()<<") "<<"(Hates:"<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getNumeroHates()<<")"
+						<<endl;
+					cout<<"COMENTARIOS---->"<<endl<<"# De: "<<j<<endl;
+					for(int h = 0;h < usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getComentarios().size();i++){
+						cout<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getComentarios()[h]->getNombreCreador()<<endl
+							<<"|"<<usuarios[posicionUsuario]->getUsuariosSeguidos()[i]->getPosts()[j]->getComentarios()[h]->getContenido()<<"|"<<endl;
+					}//fin del for de los comentarios
+				}//fin del for de los posts
+			}//fin del for de los usuarios
 			
 			
 			
@@ -400,6 +414,12 @@ int main(int argc, char** argv) {
 			break;
 		}
 	}//fin del switch principal
+	
+	archivoUsuarios->abrirEscritura(0);
+	for(int i = 0;i<usuarios.size();i++){
+		archivoUsuarios->guardarUsuario(usuarios[i]);
+	}
+	archivoUsuarios->cerrarEscritura();
 	
 	delete archivoUsuarios;
 	delete usuarioRegistrado; 
