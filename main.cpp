@@ -228,7 +228,7 @@ int main(int argc, char** argv) {
 			cout<<endl<<"Ingrese su Contrasena: ";
 			cin >> pass;
 			for(int i = 0;i < usuarios.size();i++){
-				if(user == usuarios[i]->getNombre() && pass == usuarios[i]->getContrasena()){
+				if(user == usuarios[i]->getNombreUsuario() && pass == usuarios[i]->getContrasena()){
 					posicionUsuario = i;
 					break;
 				}
